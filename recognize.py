@@ -76,11 +76,12 @@ print(f"faces_detected : {faces_detected}")
 # face_recognizer.save("trainedModel/Batch-2018-2019.yml")
 
 face_recognizer = cv2.face.LBPHFaceRecognizer_create()
-face_recognizer.read("/home/avisek/Desktop/FaceRecognition/trainedModel/Batch-2018-2019.yml")
-
-# face_recognizer = fr.train_classifier(faces,face_id)
-# face_recognizer.save("trainedModel/Batch-2018-2019.yml")
-# faces,face_id = fr.labels_for_training_data("/home/avisek/Desktop/FaceRecognition/dataset/training/Batch-2018-2019")
+try:
+    face_recognizer.read("/home/avisek/Desktop/FaceRecognition/trainedModel/Batch-2018-2019.yml")
+except:
+    face_recognizer = fr.train_classifier(faces,face_id)
+    face_recognizer.save("trainedModel/Batch-2018-2019.yml")
+    faces,face_id = fr.labels_for_training_data("/home/avisek/Desktop/FaceRecognition/dataset/training/Batch-2018-2019")
 
 name = {35:"Atiab kalam",
         51:"Avisek shaw",
